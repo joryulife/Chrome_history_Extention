@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Sample App",
+  "version": "0.0.1",
+
+  "action": {
+    "default_title": "サンプルアプリ",
+    "default_popup": "popup.html"
+  },
+  "chrome_url_overrides" : {
+    "history": "history.html"
+  },
+  "description": "React で Chrome 拡張機能を作るためのサンプル",
+  "options_page": "options.html"
+}

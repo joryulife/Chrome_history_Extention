@@ -1,0 +1,22 @@
+{
+    "name": "Sample",
+    "description": "Sample Extension",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "chrome_url_overrides" : {
+        "history": "history.html"
+    },
+    "permissions": [
+        "history",
+        "tabs",
+        "storage",
+        "tabGroups"
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
