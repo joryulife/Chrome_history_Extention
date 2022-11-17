@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Options: React.VFC = () => {
+const Options: React.FC = () => {
     return (
         <div>
             OPTIONS

@@ -7,9 +7,5 @@
     "default_title": "サンプルアプリ",
     "default_popup": "popup.html"
   },
-  "chrome_url_overrides" : {
-    "history": "history.html"
-  },
-  "description": "React で Chrome 拡張機能を作るためのサンプル",
-  "options_page": "options.html"
+  "description": "React で Chrome 拡張機能を作るためのサンプル"
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const History: React.VFC = () => {
+const History: React.FC = () => {
     return (
         <div style={{width: '200px'}}>
             HISTORY

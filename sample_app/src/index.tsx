@@ -1,33 +1,35 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Options from './Options';
 import Popup from './Popup';
+import Options from './Options';
 import History from './History';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
+/*const root = ReactDOM.createRoot(
   document.getElementById('popup') as HTMLElement ||
   document.getElementById('options') || 
-  document.createElement('div') ||
-  document.getElementById('history') ||
-  document.createElement('div') 
-);
+  document.getElementById('history') 
+);*/
+
+const root = ReactDOM.createRoot(document.getElementById('Popup') as HTMLElement);
+//const options = ReactDOM.createRoot(document.getElementById('Options') as HTMLElement);
+//const history = ReactDOM.createRoot(document.getElementById('History') as HTMLElement);
 root.render(
   <React.StrictMode>
     <Popup />
   </React.StrictMode>
 );
-root.render(
+/*options.render(
   <React.StrictMode>
     <Options />
   </React.StrictMode>,
 )
-root.render(
+history.render(
   <React.StrictMode>
     <History />
   </React.StrictMode>,
-)
+)*/
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
