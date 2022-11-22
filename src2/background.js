@@ -156,8 +156,8 @@ async function set_storage(){
 
 async function run_init(){
     console.log("init start")
-    //await clear_storage();
-    //await set_storage();
+    await clear_storage();
+    await set_storage();
     chrome.storage.local.get((items)=>{
         console.log("init done");
         console.log(items);

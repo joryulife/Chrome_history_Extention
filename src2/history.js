@@ -1,6 +1,11 @@
 let historyDiv = document.getElementById('historyDiv');
 let $ = document.getElementById.bind(document);
 
+window.addEventListener('scroll', function() {
+	scroll_position = window.pageYOffset;
+	console.log( scroll_position );
+});
+
 function histfunc(historyItems) {
     let template = $('historyTemplate');
     for (let item of historyItems) {
@@ -24,7 +29,6 @@ function histfunc(historyItems) {
     }
 }
 
-let k = 0;
 function histfunc2(historyItems){
     let histDiv = $('history_div');
 
@@ -43,6 +47,7 @@ function histfunc2(historyItems){
                 clone.querySelector('.titleLink').textContent = historyItems[groupID][item].title;
                 clone.querySelector('.titleLink').href = historyItems[groupID][item].url;
                 clone.querySelector('.pageName').innerText = historyItems[groupID][item].title;
+                clone.querySelector('.frame_center').src = historyItems[groupID][item].url;
                 if (item.title === '') {
                     clone.querySelector('.pageName').innerText = historyItems[groupID][item].url;
                 }
@@ -84,6 +89,7 @@ function histfunc2(historyItems){
 
 window.addEventListener('load', () => {
     chrome.storage.local.get((items)=>{
+        console.log(items);
         histfunc2(items);
     });
 })
