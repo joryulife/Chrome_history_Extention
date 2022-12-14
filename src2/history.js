@@ -4,8 +4,10 @@ let $ = document.getElementById.bind(document);
 window.addEventListener('scroll', function() {
 	scroll_position = window.pageYOffset;
 	console.log( scroll_position );
+    //document.getElementById('.frame_center').scrollTop = 438;
 });
 
+//1189 821
 function histfunc(historyItems) {
     let template = $('historyTemplate');
     for (let item of historyItems) {
@@ -48,6 +50,8 @@ function histfunc2(historyItems){
                 clone.querySelector('.titleLink').href = historyItems[groupID][item].url;
                 clone.querySelector('.pageName').innerText = historyItems[groupID][item].title;
                 clone.querySelector('.frame_center').src = historyItems[groupID][item].url;
+                clone.querySelector('.frame_center').setAttribute("scrolling", "yes");
+                clone.querySelector('.frame_center').scrollTop = 400;
                 if (item.title === '') {
                     clone.querySelector('.pageName').innerText = historyItems[groupID][item].url;
                 }
@@ -93,3 +97,4 @@ window.addEventListener('load', () => {
         histfunc2(items);
     });
 })
+
