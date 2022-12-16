@@ -1,35 +1,25 @@
 let historyDiv = document.getElementById('historyDiv');
 let $ = document.getElementById.bind(document);
 
-window.addEventListener('scroll', function() {
-	scroll_position = window.pageYOffset;
-	console.log( scroll_position );
-    //document.getElementById('.frame_center').scrollTop = 438;
-});
-
-//1189 821
-function histfunc(historyItems) {
-    let template = $('historyTemplate');
-    for (let item of historyItems) {
-
-        let titleLink = template.content.querySelector('.titleLink, a');
-        let pageName = template.content.querySelector('.pageName, p');
-        //let favicon = document.createElement('img');
-        let host = new URL(item.url).host;
-        var uri = new URL(item.url);
-        //favicon.src = "https://external-content.duckduckgo.com/ip3/" + encodeURI(uri.hostname) + ".ico";
-        //favicon.src = 'chrome://favicon2/?page_url=' + item.url;
-        titleLink.href = item.url;
-        titleLink.textContent = host;
-        //titleLink.appendChild(favicon);
-        pageName.innerText = item.title;
-        if (item.title === '') {
-            pageName.innerText = host;
-        }
-        var clone = document.importNode(template.content, true);
-        historyDiv.appendChild(clone);
-    }
+async function get_Element(){
+    const htmldoc = document.documentElement.cloneNode(true);
+    [...htmldoc.querySelectorAll('script')].forEach(e => e.remove())
+    return htmldoc.outerHTML
 }
+
+function get_html(){
+    get_Element().then((htmlstr)=>{
+        console.log(htmlstr)
+    })
+}
+
+const samplePromise = new Promise((resolve, reject) => {
+    chrome.storage.local.get((items)=>{
+        console.log(items);
+        histfunc2(items);
+    })
+    resolve();
+})
 
 function histfunc2(historyItems){
     let histDiv = $('history_div');
@@ -90,11 +80,16 @@ function histfunc2(historyItems){
     
 }
 
-
 window.addEventListener('load', () => {
-    chrome.storage.local.get((items)=>{
-        console.log(items);
-        histfunc2(items);
-    });
+    samplePromise.then(() => {
+        get_html()
+    }).catch((message) => { //catchの引数messageはrejectの()内に記述した内容
+        console.log(message);
+    })
 })
+
+
+
+
+
 

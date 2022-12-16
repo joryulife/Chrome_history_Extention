@@ -137,6 +137,22 @@ history.ID = {
     path:0
 }*/
 
+async function get_Element(){
+    const htmldoc = document.documentElement.cloneNode(true);
+    [...htmldoc.querySelectorAll('script')].forEach(e => e.remove())
+    return htmldoc.outerHTML
+}
+
+function get_html(){
+    get_Element().then((htmlstr)=>{
+        console.log(htmlstr)
+    })
+}
+
+self.addEventListener('load', () => {
+    get_html();
+})
+
 
 async function clear_storage(){
     chrome.storage.local.get((items)=>{
@@ -244,24 +260,3 @@ chrome.tabGroups.onCreated.addListener((groupInfo)=>{
 chrome.tabGroups.onUpdated.addListener((groupInfo)=>{
     console.log("group Change");
 });*/
-
-
-
-/*const HEADERS_TO_STRIP_LOWERCASE = [
-    'content-security-policy',
-    'x-frame-options',
-];
-
-chrome.webRequest.onHeadersReceived.addListener(
-    details => {
-        console.log(details);
-    }
-    details => ({
-        responseHeaders: details.responseHeaders.filter(header =>!HEADERS_TO_STRIP_LOWERCASE.includes(header.name.toLowerCase()))
-    }),
-    {
-        urls: ['<all_urls>']
-    },
-    ['blocking', 'responseHeaders', 'extraHeaders']
-);
-*/
